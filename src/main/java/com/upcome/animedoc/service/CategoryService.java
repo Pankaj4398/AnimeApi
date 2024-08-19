@@ -1,6 +1,7 @@
 package com.upcome.animedoc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,7 +11,8 @@ public class CategoryService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String BASE_URL = "https://animeschedule.net/api/v3/categories";
+    @Value("${api.base.url}")
+    private String BASE_URL;
 
     public Object getCategoryData(String categoryType, String slug) {
         String url = String.format("%s/%s/%s", BASE_URL, categoryType, slug);
