@@ -37,4 +37,5 @@ out/
 .vscode/
 
 ### Sensitive Info ###
-!**/src/main/resources/application.properties
+**/src/main/resources/application.properties
+src/main/resources/application.properties
