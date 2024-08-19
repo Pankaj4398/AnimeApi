@@ -2,6 +2,7 @@ package com.upcome.animedoc.service;
 
 import com.upcome.animedoc.dto.AnimeResponse;
 import com.upcome.animedoc.model.Anime;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,8 @@ import java.util.stream.Collectors;
 public class AnimeService {
 
     private final RestTemplate restTemplate;
-    private static final String BASE_URL = "https://animeschedule.net/api/v3/anime/";
+    @Value("${api.base.url}")
+    private String BASE_URL;
 
     public AnimeService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;

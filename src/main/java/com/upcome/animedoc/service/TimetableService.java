@@ -1,6 +1,7 @@
 package com.upcome.animedoc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -10,7 +11,8 @@ public class TimetableService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private static final String BASE_URL = "https://animeschedule.net/api/v3/timetables";
+    @Value("${api.base.url}")
+    private String BASE_URL;
 
     public Object getTimetable(int year, int week, String timezone) {
         String url = String.format("%s?year=%d&week=%d&tz=%s", BASE_URL, year, week, timezone);
